@@ -90,7 +90,7 @@ var posts = [
         }
     ]
 
-app.get('/posts/relevant', function(req, res) {
+app.get('/posts', function(req, res) {
     res.json(posts);
 });
 
