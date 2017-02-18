@@ -27,22 +27,6 @@ var users = [{
     }
     ];
 
-app.post('/login', function(req,res){
-    console.log("test");
-    console.log(req.body);
-    var u = users.find(function(element){
-         return (element.username === req.body.username) && (element.password === req.body.password);
-    });
-
-    if(u !== undefined)
-    {
-        return res.json({id: u.id, username: u.username});
-    }
-    else
-    {
-        return res.sendStatus(401);
-    }
-});
 var posts = [
         {
             id: 0,
@@ -125,7 +109,22 @@ app.get('/posts', function(req, res) {
 app.get('/posts/:id', function(req, res) {
     res.json(posts[req.params.id]);
 });
+app.post('/login', function(req,res){
+    console.log("test");
+    console.log(req.body);
+    var u = users.find(function(element){
+         return (element.username === req.body.username) && (element.password === req.body.password);
+    });
 
+    if(u !== undefined)
+    {
+        return res.json({id: u.id, username: u.username});
+    }
+    else
+    {
+        return res.sendStatus(401);
+    }
+});
 // start listening for incoming HTTP connections
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
