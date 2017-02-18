@@ -26,7 +26,7 @@ var users = [{
         password: "doe"
     }
     ];
-    
+
 app.post('/login', function(req,res){
     console.log("test");
     console.log(req.body);
@@ -42,7 +42,7 @@ app.post('/login', function(req,res){
     {
         return res.sendStatus(401);
     }
-})
+});
 var posts = [
         {
             id: 0,
