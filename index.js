@@ -128,7 +128,7 @@ app.post('/login', function(req,res){
 app.post('/signup', function(req,res){
     console.log("test");
     console.log(req.body);
-    var u = users.push({id:"oidsfe",username:u.body.username, password:u.body.password});
+    var u = users.push({id:"oidsfe",username:req.body.username, password:req.body.password});
 
     if(u !== undefined)
     {
