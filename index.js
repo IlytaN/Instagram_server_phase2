@@ -128,18 +128,15 @@ app.post('/login', function(req,res){
 app.post('/signup', function(req,res){
     console.log("test");
     console.log(req.body);
-    var u = users.find(function(element){
-         return (element.username === req.body.username) && (element.password === req.body.password);
-    });
+    var u = users.push({id:"oidsfe",username:u.body.username, password:u.body.password});
 
     if(u !== undefined)
     {
-        return res.sendStatus(409);
+        return res.json({id: u.id, username: u.username});
     }
     else
     {
-        users.push({id:"oidsfe",username:u.username, password:u.password});
-        return res.json({id: u.id, username: u.username});
+        return res.sendStatus(401);
     }
 });
 // start listening for incoming HTTP connections
