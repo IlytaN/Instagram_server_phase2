@@ -125,23 +125,23 @@ app.post('/login', function(req,res){
         return res.sendStatus(401);
     }
 });
-// app.post('/signup', function(req,res){
-//     console.log("test");
-//     console.log(req.body);
-//     var u = users.find(function(element){
-//          return (element.username === req.body.username) && (element.password === req.body.password);
-//     });
-//
-//     if(u !== undefined)
-//     {
-//         return res.sendStatus(409);
-//     }
-//     else
-//     {
-//         users.push(id:"oidsfe",username:u.username, password:u.password);
-//         return res.json({id: u.id, username: u.username});
-//     }
-// });
+app.post('/signup', function(req,res){
+    console.log("test");
+    console.log(req.body);
+    var u = users.find(function(element){
+         return (element.username === req.body.username) && (element.password === req.body.password);
+    });
+
+    if(u !== undefined)
+    {
+        return res.sendStatus(409);
+    }
+    else
+    {
+        users.push({id:"oidsfe",username:u.username, password:u.password});
+        return res.json({id: u.id, username: u.username});
+    }
+});
 // start listening for incoming HTTP connections
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
