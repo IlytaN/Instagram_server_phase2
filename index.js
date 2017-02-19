@@ -129,7 +129,7 @@ app.post('/signup', function(req,res){
     console.log("test");
     console.log(req.body);
     var u = users.push({id:"oidsfe",username:req.body.username, password:req.body.password});
-
+      // req.body can be understood by bodyParser :) it helps us get the data from req.
     if(u !== undefined)
     {
         return res.json({id: u.id, username: u.username});
@@ -138,6 +138,12 @@ app.post('/signup', function(req,res){
     {
         return res.sendStatus(401);
     }
+});
+app.post('/posts', function(req,res){
+    console.log("test");
+    console.log(req.body);
+    posts.unshift(req.body);
+      // req.body can be understood by bodyParser :) it helps us get the data from req.
 });
 // start listening for incoming HTTP connections
 app.listen(app.get('port'), function() {
