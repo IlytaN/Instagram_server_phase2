@@ -201,7 +201,7 @@ app.post('/search/user', function(req, res) {
 
     if( FoundUserPosts.length >= 1)
     {
-        return res.json( { username: FoundUserPosts.user.username } );
+        return res.json( { username: FoundUserPosts.user.username, profileImageSmall: FoundUserPosts.user.profileImageSmall } );
     }
     else
     {
