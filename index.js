@@ -49,7 +49,7 @@ var posts = [
             imageThumbnail: "http://media1.fdncms.com/sacurrent/imager/u/original/2513252/donald_trump4.jpg",
             likes: 892,
             caption: "Always winning #elections",
-            tags: "#dota",
+            tags: "#election",
             comments: [
                 {
                     id: 0,
@@ -85,7 +85,7 @@ var posts = [
             imageThumbnail: "http://media1.fdncms.com/sacurrent/imager/u/original/2513252/donald_trump4.jpg",
             likes: 892,
             caption: "test on #elections",
-            tags: ['elections'],
+            tags: "#USA",
             comments: [
                 {
                     id: 0,
@@ -121,7 +121,7 @@ var posts = [
             imageThumbnail: "http://media1.fdncms.com/sacurrent/imager/u/original/2513252/donald_trump4.jpg",
             likes: 892,
             caption: "Always winning #elections",
-            tags: "#dota",
+            tags: "#election",
             comments: []
         }
     ]
@@ -133,6 +133,7 @@ app.get('/posts', function(req, res) {
 app.get('/posts/:id', function(req, res) {
     res.json(posts[req.params.id]);
 });
+
 app.post('/login', function(req,res){
     console.log("test");
     console.log(req.body);
@@ -181,6 +182,26 @@ app.post('/search/tags', function(req, res) {
     if( taggedPosts.length >= 1)
     {
         return res.json( { tagname: req.body.tags, tagposts: taggedPosts, numbertagposts: taggedPosts.length } );
+    }
+    else
+    {
+        return res.send("no posts found!");
+    }
+    res.sendStatus(200);
+});
+app.post('/search/user', function(req, res) {
+    console.log(req.body.user);
+    var FoundUserPosts = [];
+    posts.find(function(post){
+         if (post.user.username === req.body.user)
+         {
+           FoundUserPosts.push(post);
+         }
+    });
+
+    if( FoundUserPosts.length >= 1)
+    {
+        return res.json( { username: FoundUserPosts.user.username } );
     }
     else
     {
