@@ -78,7 +78,7 @@ var posts = [
             id: 1,
             user: {
                 id: 1,
-                username: "dtrump",
+                username: "donaldtrump",
                 profileImageSmall: "http://core0.staticworld.net/images/article/2015/11/111915blog-donald-trump-100629006-primary.idge.jpg"
             },
             image: "http://media1.fdncms.com/sacurrent/imager/u/original/2513252/donald_trump4.jpg",
@@ -114,7 +114,7 @@ var posts = [
             id: 2,
             user: {
                 id: 1,
-                username: "dtrump",
+                username: "Trump",
                 profileImageSmall: "http://core0.staticworld.net/images/article/2015/11/111915blog-donald-trump-100629006-primary.idge.jpg"
             },
             image: "http://media1.fdncms.com/sacurrent/imager/u/original/2513252/donald_trump4.jpg",
@@ -201,7 +201,7 @@ app.post('/search/user', function(req, res) {
 
     if( FoundUserPosts.length >= 1)
     {
-        return res.json( { username: FoundUserPosts.user.username, profileImageSmall: FoundUserPosts.user.profileImageSmall } );
+        return res.json( { username: req.body.username, foundUserPosts: FoundUserPosts } );
     }
     else
     {
