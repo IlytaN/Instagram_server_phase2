@@ -20,12 +20,30 @@ app.get('/', function(req, res) {
 var users = [{
         id: "txgw35",
         username: "test",
-        password: "pwd"
+        password: "pwd",
+        following: ["john","dtrump"],
+        followed: ["john","dtrump"]
     },
     {
         id: "xvj2f2",
         username: "john",
-        password: "doe"
+        password: "doe",
+        following: ["test","dtrump"],
+        followed: ["test","dtrump"]
+    },
+    {
+        id: "1",
+        username: "dtrump",
+        password: "pwd",
+        following: ["john","test"],
+        followed: ["john","test"]
+    },
+    {
+        id: "3",
+        username: "HillaryC",
+        password: "pwd",
+        following: ["john","dtrump"],
+        followed: ["john","dtrump"]
     }
     ];
 var storage = cloudinaryStorage({
@@ -209,7 +227,6 @@ app.post('/search/user', function(req, res) {
     }
     res.sendStatus(200);
 });
-
 // start listening for incoming HTTP connections
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
